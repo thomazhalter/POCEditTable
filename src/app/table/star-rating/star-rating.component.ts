@@ -11,6 +11,7 @@ export class StarRatingComponent implements OnInit {
 
   @Input() rating;
   @Input() starCount;
+  @Input() disabled = false;
   @Output() ratingUpdated = new EventEmitter();
 
   snackBarDuration: number = 2000;

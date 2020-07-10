@@ -28,6 +28,7 @@ export class DialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.starCount = '5';
+    this.onRatingChanged(this.localData.rate);
   }
 
   doAction(){

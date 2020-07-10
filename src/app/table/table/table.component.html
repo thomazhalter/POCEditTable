@@ -16,7 +16,7 @@
                     <ng-container matColumnDef="rate">
                         <th mat-header-cell *matHeaderCellDef> Avaliação </th>
                         <td mat-cell class="my-cell" *matCellDef="let element"> 
-                            <app-star-rating [rating]="element.rate" [starCount]="starCount" (ratingUpdated)="onRatingChanged($event)"></app-star-rating>
+                            <app-star-rating [rating]="element.rate" [starCount]="starCount" [disabled]="true"></app-star-rating>
                         </td>
                     </ng-container>
 

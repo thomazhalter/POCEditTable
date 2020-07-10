@@ -24,7 +24,9 @@ export class TableComponent implements OnInit {
 
   @ViewChild(MatTable, {static: true}) table: MatTable<any>;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) {
+    this.load();
+  }
 
   ngOnInit(): void {
     this.starCount = '5';
@@ -48,30 +50,44 @@ export class TableComponent implements OnInit {
     });
   }
 
-  addRowData(rowObj){
+  addRowData(rowObj) {
     this.dataSource.push({
       skill: rowObj.skill,
       rate: rowObj.rate
     });
     this.table.renderRows();
+
+    const data = JSON.stringify(this.dataSource);
+    localStorage.setItem('skills', data);
   }
 
-  updateRowData(rowObj){
+  updateRowData(rowObj) {
     this.dataSource = this.dataSource.filter((value, key) => {
       if (value.skill === rowObj.skill){
         value.rate = rowObj.rate;
       }
       return true;
     });
+    const data = JSON.stringify(this.dataSource);
+    localStorage.setItem('skills', data);
   }
 
-  deleteRowData(rowObj){
+  deleteRowData(rowObj) {
     this.dataSource = this.dataSource.filter((value, key) => {
       return value.skill !== rowObj.skill;
     });
   }
 
-  onRatingChanged(rating){
+  onRatingChanged(rating) {
     this.rating = rating;
+  }
+
+  load() {
+    const data = localStorage.getItem('skills');
+    if (data) {
+      this.dataSource = JSON.parse(data);
+    } else {
+      this.dataSource = [];
+    }
   }
 }

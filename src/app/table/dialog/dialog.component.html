@@ -1,11 +1,11 @@
-<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+<h1 mat-dialog-title><strong>{{ action }}</strong></h1>
 
-<div mat-dialog-content>
-  <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+<div mat-dialog-content class="my-content-dialog">
+  <mat-form-field *ngIf="action != 'Excluir'; else elseTemplate">
     <input placeholder="{{action}} Competência" matInput [(ngModel)]="localData.skill">
   </mat-form-field>
 
-  <ng-container *ngIf="action != 'Delete'; else elseTemplate">
+  <ng-container *ngIf="action != 'Excluir'">
     <app-star-rating name="rate" [(ngModel)]="localData.rate" [rating]="rating" [starCount]="starCount" (ratingUpdated)="onRatingChanged($event)" ngDefaultControl></app-star-rating>
   </ng-container>
 
@@ -14,7 +14,7 @@
   </ng-template>
 </div>
 
-<div mat-dialog-actions>
+<div mat-dialog-actions class="mt20 my-button-dialog">
   <button mat-button (click)="doAction()">{{ action }}</button>
   <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancelar</button>
 </div>
