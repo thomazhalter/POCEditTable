@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 
 export interface UsersData {
+  id: number;
   skill: string;
   rate: number;
 }
@@ -51,7 +52,10 @@ export class TableComponent implements OnInit {
   }
 
   addRowData(rowObj) {
+    const id = new Date();
+
     this.dataSource.push({
+      id: id.getTime(),
       skill: rowObj.skill,
       rate: rowObj.rate
     });
@@ -62,18 +66,22 @@ export class TableComponent implements OnInit {
 
   updateRowData(rowObj) {
     this.dataSource = this.dataSource.filter((value, key) => {
-      if (value.skill === rowObj.skill){
+      console.log(value);
+      if (value.id === rowObj.id){
+        value.skill = rowObj.skill;
         value.rate = rowObj.rate;
       }
       return true;
     });
+
+    console.log('datasource', this.dataSource);
 
     this.saveLocalStorage(this.dataSource);
   }
 
   deleteRowData(rowObj) {
     this.dataSource = this.dataSource.filter((value, key) => {
-      return value.skill !== rowObj.skill;
+      return value.id !== rowObj.id;
     });
 
     this.saveLocalStorage(this.dataSource);
