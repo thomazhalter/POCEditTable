@@ -1,0 +1,20 @@
+@import './scss/material';
+@import './scss/utils';
+@import './scss/responsive';
+@import './scss/variables';
+@import './scss/theme';
+
+body {
+    height: 98vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-align: center;
+    background: #090435;
+    background: -moz-linear-gradient(60deg, #090435 0%, #3023ae 100%);
+    background: -webkit-linear-gradient(60deg, #090435 0%, #3023ae 100%);
+    background: linear-gradient(60deg, #090435 0%, #3023ae 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3023ae', endColorstr='#c86dd7', GradientType=1);
+}

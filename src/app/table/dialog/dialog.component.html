@@ -1,0 +1,18 @@
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+
+<div mat-dialog-content>
+  <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+    <input placeholder="{{action}} Competência" matInput [(ngModel)]="localData.skill">
+  </mat-form-field>
+  <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+    <input placeholder="{{action}} Avaliação" matInput [(ngModel)]="localData.rate">
+  </mat-form-field>
+  <ng-template #elseTemplate>
+    Tem certeza que deseja excluir <b>{{ localData.skil }}</b>?
+  </ng-template>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction()">{{ action }}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancelar</button>
+</div>
