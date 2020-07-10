@@ -57,8 +57,7 @@ export class TableComponent implements OnInit {
     });
     this.table.renderRows();
 
-    const data = JSON.stringify(this.dataSource);
-    localStorage.setItem('skills', data);
+    this.saveLocalStorage(this.dataSource);
   }
 
   updateRowData(rowObj) {
@@ -68,14 +67,16 @@ export class TableComponent implements OnInit {
       }
       return true;
     });
-    const data = JSON.stringify(this.dataSource);
-    localStorage.setItem('skills', data);
+
+    this.saveLocalStorage(this.dataSource);
   }
 
   deleteRowData(rowObj) {
     this.dataSource = this.dataSource.filter((value, key) => {
       return value.skill !== rowObj.skill;
     });
+
+    this.saveLocalStorage(this.dataSource);
   }
 
   onRatingChanged(rating) {
@@ -89,5 +90,10 @@ export class TableComponent implements OnInit {
     } else {
       this.dataSource = [];
     }
+  }
+
+  saveLocalStorage(dataSource) {
+    const data = JSON.stringify(dataSource);
+    localStorage.setItem('skills', data);
   }
 }
