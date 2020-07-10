@@ -4,11 +4,13 @@
   <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
     <input placeholder="{{action}} Competência" matInput [(ngModel)]="localData.skill">
   </mat-form-field>
-  <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
-    <input placeholder="{{action}} Avaliação" matInput [(ngModel)]="localData.rate">
-  </mat-form-field>
+
+  <ng-container *ngIf="action != 'Delete'; else elseTemplate">
+    <app-star-rating name="rate" [(ngModel)]="localData.rate" [rating]="rating" [starCount]="starCount" (ratingUpdated)="onRatingChanged($event)" ngDefaultControl></app-star-rating>
+  </ng-container>
+
   <ng-template #elseTemplate>
-    Tem certeza que deseja excluir <b>{{ localData.skil }}</b>?
+    Tem certeza que deseja excluir <b>{{ localData.skill }}</b>?
   </ng-template>
 </div>
 

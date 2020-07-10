@@ -19,11 +19,15 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = ['skill', 'rate', 'action'];
   dataSource = ELEMENT_DATA;
 
+  starCount: string;
+  rating: string;
+
   @ViewChild(MatTable, {static: true}) table: MatTable<any>;
 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.starCount = '5';
   }
 
   openDialog(action, obj) {
@@ -65,5 +69,9 @@ export class TableComponent implements OnInit {
     this.dataSource = this.dataSource.filter((value, key) => {
       return value.skill !== rowObj.skill;
     });
+  }
+
+  onRatingChanged(rating){
+    this.rating = rating;
   }
 }

@@ -11,17 +11,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { MainComponent } from './main/main.component';
 import { TableComponent } from './table/table.component';
 import { DialogComponent } from './dialog/dialog.component';
-
+import { StarRatingComponent } from './star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
     MainComponent,
     TableComponent,
-    DialogComponent
+    DialogComponent,
+    StarRatingComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +38,9 @@ import { DialogComponent } from './dialog/dialog.component';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule,
+    MatTooltipModule
   ],
   entryComponents: [
     DialogComponent

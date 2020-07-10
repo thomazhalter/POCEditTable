@@ -16,6 +16,9 @@ export class DialogComponent implements OnInit {
   action: string;
   localData: any;
 
+  starCount: string;
+  rating: string;
+
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData) {
@@ -24,6 +27,7 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.starCount = '5';
   }
 
   doAction(){
@@ -34,4 +38,8 @@ export class DialogComponent implements OnInit {
     this.dialogRef.close({event: 'Cancelar'});
   }
 
+  onRatingChanged(rating){
+    this.rating = rating;
+    this.localData.rate = this.rating;
+  }
 }
